@@ -9,7 +9,7 @@ db = pg.connect(
 )
 
 
-def execute_queries(db, sql_commands):
+def create_topfilm(db, sql_commands):
     db.autocommit = True
     with db.cursor() as cursor:
         for sql_command in sql_commands:
@@ -270,4 +270,23 @@ sql_commands = ["DROP TABLE IF EXISTS topfilm;",
 "INSERT INTO topfilm (ranking, name, year, director, genre, rating, country ) VALUES ('249', 'Прислуга', '2011', 'Тейт Тейлор', 'драма', '8', 'США ');",
 "INSERT INTO topfilm (ranking, name, year, director, genre, rating, country ) VALUES ('250', 'Стальной гигант', '1999', 'Брэд Бёрд', 'фантастика', '8', 'США ');"]
 
-execute_queries(db, sql_commands)
+create_topfilm(db, sql_commands)
+
+
+def execute(queries):
+    try:
+        db = pg.connect(
+            database='movies',
+            user='postgres',
+            password='password',
+            host='localhost',
+            port='5432'
+        )
+
+        db.autocommit = True
+        cursor = db.cursor()
+        for query in queries:
+            cursor.execute(query)
+        return cursor.fetchall()
+    except:
+        print('0')

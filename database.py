@@ -792,4 +792,13 @@ execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 2020"])
 43
 6"""
 
-
+#Многократные появления
+execute(["SELECT director FROM authors GROUP BY director HAVING COUNT(director) >= 5"])
+"""Чарли Чаплин 
+Кристофер Нолан 
+Билли Уайлдер 
+Акира Куросава 
+Стэнли Кубрик 
+Альфред Хичкок 
+Стивен Спилберг 
+Квентин Тарантино"""

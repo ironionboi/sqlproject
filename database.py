@@ -766,3 +766,30 @@ execute(["SELECT COUNT(film) FROM oscars"])
 """94"""
 
 """ответ: 28/94"""
+
+#Хронологическая популярность
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1920 and year < 1930"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1930 and year < 1940"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1940 and year < 1950"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1950 and year < 1960"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1960 and year < 1970"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1970 and year < 1980"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1980 and year < 1990"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 1990 and year < 2000"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 2000 and year < 2010"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 2010 and year < 2020"])
+execute(["SELECT COUNT(name) FROM topfilm WHERE year >= 2020"])
+
+"""6
+7
+12
+23
+18
+19
+27
+41
+48
+43
+6"""
+
+

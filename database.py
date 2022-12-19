@@ -697,7 +697,7 @@ execute(["SELECT (COUNT(DISTINCT country) - 1) FROM topfilm"])
 execute(["SELECT DISTINCT country FROM topfilm GROUP BY country HAVING country != 'США '"])
 
 
-19
+"""19
 Аргенитина 
 Великобритания 
 Бразилия 
@@ -716,14 +716,14 @@ execute(["SELECT DISTINCT country FROM topfilm GROUP BY country HAVING country !
 СССР 
 Мексика 
 Италия 
-Германия 
+Германия""" 
 
 
 
 #Оскароносные фильмы, находящиеся в топе-250 по сей день 
 
 execute(["SELECT film FROM oscars INTERSECT SELECT name FROM topfilm"])
-Бен-Гур
+"""Бен-Гур
 Молчание ягнят
 Малышка на миллион
 Крёстный отец 2
@@ -759,10 +759,10 @@ execute(["SELECT film FROM oscars INTERSECT SELECT name FROM topfilm"])
 Гладиатор
 Ганди
 Зелёная книга
-Форрест Гамп
+Форрест Гамп"""
 
 
 execute(["SELECT COUNT(film) FROM oscars"])
-94
+"""94"""
 
-ответ: 28/94
+"""ответ: 28/94"""

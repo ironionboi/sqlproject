@@ -15,6 +15,7 @@ def create_db(db):
         sql_commands = ["DROP TABLE IF EXISTS topfilm;",
                         "DROP TABLE IF EXISTS oscars;",
                         "DROP TABLE IF EXISTS authors;",
+                        "DROP TABLE IF EXISTS actors;",
                         "DROP TABLE IF EXISTS trivia;",
                         "DROP TABLE IF EXISTS scores;",
             """CREATE TABLE topfilm 

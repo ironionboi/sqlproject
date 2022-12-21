@@ -15,7 +15,7 @@ def execute(queries):
             cursor.execute(query)
         results = cursor.fetchall()
         for result in results:
-            print(result[0])
+            print(result)
 
 
     except:
@@ -129,4 +129,68 @@ execute(["SELECT COUNT(id) FROM trivia WHERE year >= 2020"])
 execute(["SELECT director, COUNT(director) AS t1 FROM authors GROUP BY director ORDER BY  t1 DESC LIMIT 1;"])
 """Мартин Скорсезе"""
 
-#Самый оскароносный режиссер 
+#Список актеров, игравших в комедиях и в детективах
+execute(["""SELECT actor FROM actors JOIN trivia ON actors.id = trivia.id WHERE trivia.genre = 'детектив' 
+INTERSECT SELECT actor FROM actors JOIN trivia ON actors.id = trivia.id WHERE trivia.genre = 'комедия'"""])
+"""Мэттью Макконахи
+Том Хэнкс
+Сергей Бондарчук
+Леонардо ДиКаприо
+Георгий Юматов
+Майкл Дж. Фокс"""
+
+#Список оскароносных фильмов в топе-250 по популярности 
+execute(["SELECT film FROM oscars o INNER JOIN topfilm t ON o.film = t.name"])
+"""Крёстный отец
+Крёстный отец 2
+Список Шиндлера
+Властелин колец: Возвращение короля
+Форрест Гамп
+Пролетая над гнездом кукушки
+Молчание ягнят
+Паразиты
+Гладиатор
+Отступники
+Касабланка
+Красота по-американски
+Амадей
+Храброе сердце
+Лоуренс Аравийский
+Квартира
+Афера
+Всё о Еве
+Зелёная книга
+Непрощённый
+Игры разума
+Старикам тут не место
+Унесённые ветром
+Мост через реку Квай
+Малышка на миллион
+В порту
+12 лет рабства
+Бен-Гур
+Охотник на оленей
+Рокки
+Взвод
+В центре внимания
+Лучшие годы нашей жизни
+Ребекка
+Это случилось однажды ночью
+Звуки музыки
+Ганди"""
+
+#Автор самого популярного оскароносного фильма
+execute(["SELECT director FROM authors WHERE id = (SELECT MIN(id) FROM topfilm t INNER JOIN oscars o ON o.film = t.name)"])
+
+#Найдем лучший год в истории кино (с наибольшим количеством фильмов)
+execute(["""SELECT year,COUNT(*) 
+  FROM trivia
+  GROUP BY year
+  ORDER BY 2 DESC LIMIT 1"""])
+
+"""(1995, 8)"""
+
+
+
+
+
